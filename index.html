@@ -863,49 +863,192 @@
             padding-top: 2rem;
             border-top: 1px solid rgba(255,255,255,0.1);
         }
-        /* Responsive */
+        /* =====================================================
+           TABLET (max-width: 1024px)
+        ===================================================== */
         @media (max-width: 1024px) {
-            .hero-content, .pain-grid, .solution-content, .activities-grid, .teacher-grid, .roi-grid, .whatsapp-section {
+            .hero-content, .pain-grid, .solution-content, .activities-grid, .roi-grid {
                 grid-template-columns: 1fr;
             }
             .hero-text { text-align: center; }
             .hero-text p { margin-left: auto; margin-right: auto; }
             .hero-buttons, .hero-stats-box { justify-content: center; }
-            .social-proof-badge { grid-template-columns: repeat(2, 1fr); gap: 1rem; border-radius: 20px; }
-            .benefits-grid, .pricing-grid, .impact-grid { grid-template-columns: 1fr 1fr; }
-            .testimonial-slide { flex: 0 0 calc(50% - 1rem); }
+            .social-proof-badge { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; border-radius: 16px; padding: 0.75rem 1.2rem; }
+            .benefits-grid, .impact-grid { grid-template-columns: 1fr 1fr; }
+            .pricing-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+            .testimonial-slide { flex: 0 0 calc(50% - 0.75rem); }
             .before-after-grid { grid-template-columns: 1fr; }
             .footer-grid { grid-template-columns: repeat(2, 1fr); }
+            .teacher-grid { max-width: 600px; margin: 0 auto; }
         }
+        /* =====================================================
+           MOBILE (max-width: 768px) — PREMIUM COMPACT DESIGN
+        ===================================================== */
         @media (max-width: 768px) {
-            .container { padding: 0 1.2rem; }
-            .section-title { font-size: 2rem; line-height: 1.3; margin-bottom: 1rem; }
-            .section-subtitle { font-size: 1rem; margin-bottom: 2.5rem; }
-            .hero-text h1 { font-size: 2.2rem; line-height: 1.2; }
-            .hero-buttons { flex-direction: column; gap: 1rem; }
-            .process-steps-grid, .benefits-grid, .pricing-grid, .impact-grid, .footer-grid { grid-template-columns: 1fr; }
-            .testimonial-slide { flex: 0 0 100%; }
-            .activity-card { flex-direction: column; }
-            .activity-img { width: 100%; height: 200px; object-fit: cover; }
-            .guarantee-box { padding: 2rem 1.5rem; }
-            .social-proof-badge { grid-template-columns: 1fr; text-align: center; font-size: 0.9rem; }
-            .teacher-card { flex-direction: column; text-align: center; padding: 2rem 1.5rem; gap: 1.5rem; }
-            .teacher-info { text-align: center; }
-            .teacher-img { width: 100%; height: auto; max-height: 250px; }
-            .closing-section { padding: 3rem 1.5rem; border-radius: 20px; }
-            .closing-section h2 { font-size: 1.8rem; }
-            header { padding: 0.8rem 0; }
+            /* === GLOBALS === */
+            .container { padding: 0 1rem; }
+            section { padding: 2.8rem 0; }
+            .section-title { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 0.6rem; }
+            .section-subtitle { font-size: 0.9rem; color: var(--text-slate); margin-bottom: 1.8rem; line-height: 1.5; max-width: 100%; }
+            /* === HEADER === */
+            header { padding: 0.7rem 0; }
             .header-content { justify-content: space-between; }
+            .logo { font-size: 1.3rem; }
             header nav { display: flex; align-items: center; }
             header nav a:not(.cta-header) { display: none; }
-            nav .cta-header { display: inline-block; padding: 0.6rem 1.2rem; font-size: 0.9rem; }
-            .ba-box { padding: 0; }
-            .ba-header { flex-direction: column; gap: 1rem; text-align: center; padding: 1.5rem; }
-            .ba-content { padding: 1.5rem; font-size: 0.95rem; }
-            .roi-grid { gap: 1.5rem; }
-            .roi-card { padding: 1.5rem; }
-            .pricing-card { padding: 2rem 1.5rem; }
-            section { padding: 4rem 0; }
+            .cta-header { padding: 0.5rem 1rem; font-size: 0.82rem; border-radius: 7px; }
+            /* === HERO === */
+            .hero { padding: 2rem 0 3rem; }
+            .social-proof-badge {
+                grid-template-columns: 1fr 1fr;
+                gap: 0.4rem;
+                padding: 0.7rem 1rem;
+                font-size: 0.75rem;
+                margin-bottom: 1.8rem;
+                border-radius: 14px;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            .hero-content { gap: 2rem; }
+            .hero-text { text-align: center; }
+            .hero-text h1 { font-size: 1.85rem; line-height: 1.25; margin-bottom: 0.9rem; }
+            .hero-text p { font-size: 0.95rem; margin-bottom: 1.5rem; max-width: 100%; }
+            .hero-buttons { flex-direction: column; gap: 0.75rem; margin-bottom: 1.5rem; }
+            .btn-primary { padding: 0.85rem 1.5rem; font-size: 0.95rem; border-radius: 9px; text-align: center; }
+            .btn-secondary { padding: 0.75rem 1.5rem; font-size: 0.9rem; border-radius: 9px; text-align: center; }
+            .hero-stats-box { flex-wrap: wrap; gap: 1rem; padding-top: 1.2rem; justify-content: center; }
+            .hero-stat-value { font-size: 1rem; }
+            .hero-stat-label { font-size: 0.78rem; }
+            .mock-dashboard { padding: 1.2rem; border-radius: 14px; margin-top: 0; }
+            .mock-header { margin-bottom: 1rem; }
+            .mock-grid { gap: 0.75rem; }
+            .mock-card { padding: 0.9rem 1rem; border-radius: 9px; }
+            .mock-card h4 { font-size: 0.65rem; }
+            .mock-card p { font-size: 0.85rem; }
+            /* === PAIN POINTS === */
+            .pain-grid { grid-template-columns: 1fr; gap: 1rem; }
+            .pain-card { padding: 1.2rem 1.4rem; border-radius: 14px; }
+            .pain-icon { font-size: 1.8rem; margin-bottom: 0.6rem; }
+            .pain-card h3 { font-size: 1rem; margin-bottom: 0.4rem; }
+            .pain-card p { font-size: 0.875rem; line-height: 1.5; }
+            /* === SOLUTION / HOW IT WORKS === */
+            .solution-content { gap: 2rem; }
+            .step-item { gap: 1rem; margin-bottom: 1.2rem; }
+            .step-num { width: 36px; height: 36px; min-width: 36px; font-size: 0.9rem; }
+            .step-info h3 { font-size: 1rem; margin-bottom: 0.3rem; }
+            .step-info p { font-size: 0.875rem; }
+            .feature-box-grid { gap: 0.75rem; }
+            .feature-box { padding: 1rem 1.2rem; border-radius: 12px; gap: 0.75rem; }
+            .feature-box-icon { font-size: 1.5rem; }
+            .feature-box h4 { font-size: 0.9rem; margin-bottom: 0.2rem; }
+            .feature-box p { font-size: 0.82rem; }
+            /* === ACTIVITIES === */
+            .activities-grid { gap: 1rem; }
+            .activity-card { flex-direction: row; align-items: stretch; border-radius: 14px; overflow: hidden; }
+            .activity-img { width: 100px; height: 100px; min-width: 100px; object-fit: cover; border-radius: 0; }
+            .activity-details { padding: 0.9rem 1rem; }
+            .activity-badge { font-size: 0.7rem; padding: 0.2rem 0.6rem; margin-bottom: 0.4rem; }
+            .activity-details h3 { font-size: 0.9rem; margin-bottom: 0.3rem; }
+            .activity-details p { font-size: 0.8rem; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+            .btn-view-all { padding: 0.75rem 1.8rem; font-size: 0.9rem; margin-top: 1.5rem; border-radius: 9px; }
+            /* === HOW IT WORKS (PROCESS) === */
+            .process-steps-grid { gap: 1.5rem; }
+            .process-steps-grid > div { text-align: center; }
+            .process-circle { width: 64px; height: 64px; font-size: 1.6rem; margin: 0 auto 0.9rem; }
+            .process-steps-grid h3 { font-size: 1rem; margin-bottom: 0.4rem; }
+            .process-steps-grid p { font-size: 0.875rem; }
+            /* === BENEFITS === */
+            .benefits-grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+            .benefit-card { padding: 1.2rem 1rem; border-radius: 14px; }
+            .benefit-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+            .benefit-card h4 { font-size: 0.9rem; }
+            /* === TEACHERS ("Professoras Reais") === */
+            .teacher-grid { gap: 1.2rem; }
+            .teacher-card { flex-direction: row; align-items: center; padding: 1.2rem; gap: 1rem; border-radius: 16px; }
+            .teacher-img { width: 80px; height: 80px; min-width: 80px; border-radius: 12px; object-fit: cover; }
+            .teacher-info { text-align: left; }
+            .teacher-loc { font-size: 0.75rem; margin-bottom: 0.2rem; }
+            .teacher-card h3 { font-size: 0.95rem; margin-bottom: 0.4rem; }
+            .teacher-quote { font-size: 0.82rem; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+            .teacher-quote::before { font-size: 2.5rem; top: -12px; left: -16px; }
+            /* === ROI SECTION === */
+            .roi-grid { grid-template-columns: 1fr; gap: 1rem; }
+            .roi-card { padding: 1.4rem; border-radius: 16px; }
+            .roi-card h3 { font-size: 0.85rem; margin-bottom: 1rem; }
+            .roi-stat { font-size: 0.875rem; padding: 0.5rem 0; }
+            .roi-highlight { padding: 1rem; border-radius: 10px; margin-top: 1rem; }
+            .roi-highlight h4 { font-size: 0.85rem; margin-bottom: 0.4rem; }
+            .roi-highlight p { font-size: 0.82rem; }
+            /* === BEFORE / AFTER === */
+            .before-after-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+            .ba-box { border-radius: 16px; }
+            .ba-header { padding: 1rem 1.2rem; flex-direction: row; }
+            .ba-badge { font-size: 0.7rem; padding: 0.35rem 0.9rem; }
+            .ba-content { padding: 1.2rem; font-size: 0.875rem; line-height: 1.6; }
+            .ba-content h4 { font-size: 1rem; margin-bottom: 1rem; }
+            .ba-step { margin-bottom: 1rem; padding-left: 0.8rem; }
+            .ba-step strong { font-size: 0.75rem; }
+            .ba-tip { padding: 0.8rem 1rem; font-size: 0.82rem; border-radius: 10px; margin-top: 1.2rem; }
+            /* === TESTIMONIALS CAROUSEL === */
+            .testimonials-carousel-section { overflow: hidden; }
+            .carousel-container { padding: 0; border-radius: 0; }
+            .testimonial-slide { flex: 0 0 85%; padding: 1.4rem; border-radius: 16px; }
+            .t-avatar { width: 48px; height: 48px; margin-bottom: 0.8rem; }
+            .t-stars { font-size: 0.85rem; margin-bottom: 0.6rem; }
+            .testimonial-quote { font-size: 0.875rem; line-height: 1.55; }
+            .carousel-controls { margin-top: 1.2rem; gap: 0.75rem; }
+            .carousel-btn { width: 36px; height: 36px; font-size: 1rem; }
+            .carousel-dots { gap: 0.4rem; margin-top: 1rem; }
+            .dot { width: 7px; height: 7px; }
+            /* === GUARANTEE === */
+            .guarantee-section { padding: 2.5rem 0; }
+            .guarantee-box { padding: 2rem 1.2rem; border-radius: 20px; }
+            .guarantee-badge { width: 80px; height: 80px; margin-bottom: 1rem; }
+            .guarantee-box h2 { font-size: 1.4rem; margin-bottom: 0.8rem; }
+            .guarantee-box p { font-size: 0.875rem; line-height: 1.6; margin-bottom: 1.5rem; }
+            /* === PLANS / PRICING === */
+            .pricing-grid { grid-template-columns: 1fr; gap: 1rem; max-width: 100%; }
+            .pricing-card { padding: 1.6rem 1.4rem; border-radius: 18px; }
+            .pricing-card h3 { font-size: 1.1rem; margin-bottom: 0.3rem; }
+            .price { font-size: 2.2rem; margin: 0.8rem 0; }
+            .price span { font-size: 0.9rem; }
+            .price-features { margin: 1.2rem 0; }
+            .price-features li { padding: 0.5rem 0; font-size: 0.875rem; }
+            .price-btn { padding: 0.9rem; font-size: 0.95rem; border-radius: 10px; }
+            .featured-badge { font-size: 0.7rem; padding: 0.35rem 1rem; top: -12px; }
+            /* === FAQ === */
+            .faq-accordion { max-width: 100%; }
+            .faq-item { border-radius: 10px; margin-bottom: 0.6rem; }
+            .faq-q { padding: 1rem 1.2rem; font-size: 0.9rem; }
+            .faq-item.active .faq-a { padding: 0 1.2rem 1.2rem; }
+            /* === IMPACT / NUMBERS === */
+            .impact-grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+            .impact-card { padding: 1.4rem 1rem; border-radius: 14px; }
+            .impact-val { font-size: 1.8rem; }
+            .impact-card p { font-size: 0.82rem; }
+            /* === CLOSING CTA === */
+            .closing-section { padding: 2.5rem 1.5rem; border-radius: 18px; }
+            .closing-section h2 { font-size: 1.5rem; margin-bottom: 0.8rem; line-height: 1.3; }
+            .closing-section p { font-size: 0.9rem; margin-bottom: 1.5rem; }
+            /* === FOOTER === */
+            footer { padding: 3rem 0 1.5rem; }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem; }
+            .footer-col h4 { font-size: 0.9rem; margin-bottom: 0.8rem; }
+            .footer-col li { margin-bottom: 0.5rem; font-size: 0.85rem; }
+            .footer-bottom { padding-top: 1.5rem; font-size: 0.82rem; }
+        }
+        /* =====================================================
+           SMALL PHONES (max-width: 390px)
+        ===================================================== */
+        @media (max-width: 390px) {
+            .hero-text h1 { font-size: 1.65rem; }
+            .section-title { font-size: 1.45rem; }
+            .social-proof-badge { font-size: 0.7rem; }
+            .teacher-card { flex-direction: column; text-align: center; }
+            .teacher-img { width: 100%; max-height: 160px; }
+            .teacher-info { text-align: center; }
+            .benefits-grid { grid-template-columns: 1fr 1fr; }
+            .impact-grid { grid-template-columns: 1fr 1fr; }
         }
     </style>
 </head>
