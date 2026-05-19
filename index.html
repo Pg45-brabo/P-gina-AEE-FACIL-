@@ -1,0 +1,1517 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AEE Fácil - Adapte atividades escolares em minutos</title>
+    <link rel="icon" type="image/png" href="https://res.cloudinary.com/deqgw5vdn/image/upload/q_auto/f_auto/v1779160291/AEEFA%CC%81CIl_LOGO_ufm2ku.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --azul: #4A90E2;
+            --verde: #6FCF97;
+            --vermelho: #E24B4A;
+            --amarelo: #F2C94C;
+            --bg-light: #F8FAFC;
+            --bg-blue: #EFF6FF;
+            --bg-green: #F0FFF4;
+            --bg-red: #FFEBEE;
+            --text-dark: #1E293B;
+            --text-slate: #475569;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+        }
+        h1, h2, h3 {
+            font-family: 'Poppins', sans-serif;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(74, 144, 226, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--azul) 0%, var(--verde) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: var(--azul);
+        }
+        .cta-header {
+            background: var(--azul);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid var(--azul);
+        }
+        .cta-header:hover {
+            background: white;
+            color: var(--azul);
+        }
+        /* Hero Section */
+        .hero {
+            padding: 4rem 0 6rem;
+            background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-blue) 50%, var(--bg-green) 100%);
+            position: relative;
+        }
+        .social-proof-badge {
+            background: var(--bg-blue);
+            border: 1px solid rgba(74, 144, 226, 0.2);
+            border-radius: 50px;
+            padding: 0.75rem 2rem;
+            display: grid;
+            grid-template-columns: repeat(4, auto);
+            gap: 2rem;
+            width: fit-content;
+            margin: 0 auto 3rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--azul);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .hero-text h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+        .hero-text h1 span {
+            color: var(--azul);
+        }
+        .hero-text p {
+            font-size: 1.2rem;
+            color: var(--text-slate);
+            margin-bottom: 2.5rem;
+            max-width: 550px;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--azul) 0%, #2E5CB8 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 10px 25px rgba(74, 144, 226, 0.3);
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(74, 144, 226, 0.4);
+        }
+        .btn-secondary {
+            background: white;
+            color: var(--azul);
+            padding: 1rem 2rem;
+            border: 2px solid var(--azul);
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        .btn-secondary:hover {
+            background: var(--bg-blue);
+        }
+        .hero-stats-box {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            border-top: 1px solid rgba(0,0,0,0.05);
+            padding-top: 2rem;
+        }
+        .hero-stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+        .hero-stat-value {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+        .hero-stat-label {
+            font-size: 0.85rem;
+            color: var(--text-slate);
+        }
+        /* Mock Dashboard */
+        .mock-dashboard {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.12);
+            padding: 2rem;
+            border: 1px solid rgba(74,144,226,0.15);
+        }
+        .mock-header {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 2rem;
+        }
+        .mock-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #E2E8F0;
+        }
+        .mock-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        .mock-card {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--azul);
+        }
+        .mock-card:nth-child(2) { border-left-color: var(--verde); }
+        .mock-card:nth-child(3) { border-left-color: var(--amarelo); }
+        .mock-card:nth-child(4) { border-left-color: var(--vermelho); }
+        .mock-card h4 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-slate);
+            margin-bottom: 0.5rem;
+        }
+        .mock-card p {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+        /* Sections General */
+        section {
+            padding: 6rem 0;
+        }
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+        .section-subtitle {
+            font-size: 1.2rem;
+            text-align: center;
+            color: var(--text-slate);
+            margin-bottom: 4rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        /* Pain Points */
+        .pain-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        .pain-card {
+            padding: 2.5rem;
+            border-radius: 16px;
+            transition: all 0.3s;
+            border: 1px solid transparent;
+        }
+        .pain-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+        }
+        .pain-card.c1 { background: var(--bg-red); border-left: 5px solid var(--vermelho); }
+        .pain-card.c2 { background: #FFFBF0; border-left: 5px solid var(--amarelo); }
+        .pain-card.c3 { background: var(--bg-green); border-left: 5px solid var(--verde); }
+        .pain-card.c4 { background: var(--bg-blue); border-left: 5px solid var(--azul); }
+        .pain-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+        .pain-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+        /* Solução Section */
+        .solution-section {
+            background: linear-gradient(135deg, var(--bg-blue) 0%, var(--bg-green) 100%);
+        }
+        .solution-content {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+        .step-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+        .step-item {
+            display: flex;
+            gap: 1.5rem;
+        }
+        .step-num {
+            min-width: 50px;
+            height: 50px;
+            background: var(--azul);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+        .step-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        .feature-box-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+        .feature-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+        .feature-box-icon {
+            font-size: 2.5rem;
+            color: var(--azul);
+        }
+        /* Atividades Section */
+        .activities-section {
+            background: linear-gradient(135deg, var(--bg-green) 0%, #E6FFEC 100%);
+        }
+        .activities-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+        }
+        .activity-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+        .activity-card:hover {
+            transform: translateY(-8px);
+        }
+        .activity-img {
+            width: 200px;
+            height: auto;
+            object-fit: cover;
+        }
+        .activity-details {
+            padding: 2rem;
+            flex: 1;
+        }
+        .activity-badge {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .activity-card.red { border-left: 6px solid var(--vermelho); }
+        .activity-card.red .activity-badge { background: var(--bg-red); color: var(--vermelho); }
+        .activity-card.blue { border-left: 6px solid var(--azul); }
+        .activity-card.blue .activity-badge { background: var(--bg-blue); color: var(--azul); }
+        .activity-card.yellow { border-left: 6px solid var(--amarelo); }
+        .activity-card.yellow .activity-badge { background: #FFFBF0; color: #A89429; }
+        .activity-card.green { border-left: 6px solid var(--verde); }
+        .activity-card.green .activity-badge { background: var(--bg-green); color: var(--verde); }
+        .activity-details h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        .btn-view-all {
+            display: block;
+            width: fit-content;
+            margin: 0 auto;
+            background: var(--verde);
+            color: white;
+            padding: 1.2rem 3rem;
+            border-radius: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+        .btn-view-all:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(111, 207, 151, 0.4);
+        }
+        /* Process Steps Circles */
+        .process-steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            text-align: center;
+        }
+        .process-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+        .g-red-blue { background: linear-gradient(135deg, var(--vermelho) 0%, var(--azul) 100%); }
+        .g-yellow-green { background: linear-gradient(135deg, var(--amarelo) 0%, var(--verde) 100%); }
+        .g-green-red { background: linear-gradient(135deg, var(--verde) 0%, var(--vermelho) 100%); }
+        /* Benefícios Grid */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        .benefit-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            transition: all 0.3s;
+        }
+        .benefit-card:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+        .benefit-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--bg-green);
+            color: var(--verde);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+        /* Professoras Reais */
+        .real-teachers-section {
+            background: linear-gradient(135deg, var(--bg-green) 0%, #E6FFEC 100%);
+        }
+        .teacher-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .teacher-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 24px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+            transition: transform 0.3s;
+        }
+        .teacher-card:hover {
+            transform: scale(1.02);
+        }
+        .teacher-img {
+            width: 280px;
+            height: 200px;
+            border-radius: 16px;
+            object-fit: cover;
+            flex-shrink: 0;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        .teacher-info {
+            text-align: left;
+        }
+        .teacher-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.3rem;
+            color: var(--text-dark);
+        }
+        .teacher-loc {
+            font-size: 0.9rem;
+            color: var(--azul);
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            display: block;
+        }
+        .teacher-quote {
+            font-size: 1.1rem;
+            color: var(--text-slate);
+            line-height: 1.7;
+            font-style: italic;
+            position: relative;
+        }
+        .teacher-quote::before {
+            content: '“';
+            font-size: 4rem;
+            color: var(--verde);
+            opacity: 0.2;
+            position: absolute;
+            top: -20px;
+            left: -30px;
+            font-family: serif;
+        }
+        /* ROI Section */
+        .roi-section {
+            background: linear-gradient(135deg, var(--bg-red) 0%, #FFE6E6 100%);
+        }
+        .roi-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+        .roi-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            border-top: 8px solid var(--vermelho);
+            box-shadow: 0 20px 40px rgba(226, 75, 74, 0.1);
+        }
+        .roi-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .roi-stat {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        .roi-stat span {
+            font-weight: 700;
+        }
+        .roi-highlight {
+            background: var(--bg-red);
+            color: var(--vermelho);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+        }
+        .roi-highlight h4 {
+            margin-bottom: 0.5rem;
+        }
+        /* Antes e Depois - Premium Overhaul */
+        .before-after-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+        .ba-box {
+            padding: 0;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s;
+        }
+        .ba-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.12);
+        }
+        .ba-header {
+            padding: 1.5rem 2.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .ba-box.before { border: 1px solid rgba(242, 201, 76, 0.2); }
+        .ba-box.after { border: 2px solid var(--verde); }
+        .ba-box.before .ba-header { background: #FFFBF0; border-bottom: 1px solid rgba(242, 201, 76, 0.1); }
+        .ba-box.after .ba-header { background: var(--bg-green); border-bottom: 1px solid rgba(111, 207, 151, 0.1); }
+        .ba-badge {
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+        }
+        .before .ba-badge { background: var(--amarelo); color: #A89429; }
+        .after .ba-badge { background: var(--verde); color: white; }
+        .ba-content {
+            background: white;
+            padding: 3rem;
+            flex-grow: 1;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+        }
+        .before .ba-content {
+            color: #64748b;
+            background-color: #fafafa;
+        }
+        .after .ba-content {
+            color: var(--text-dark);
+            position: relative;
+        }
+        .ba-content h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+        .ba-step {
+            margin-bottom: 1.5rem;
+            padding-left: 1rem;
+            border-left: 3px solid var(--verde);
+        }
+        .ba-step strong {
+            display: block;
+            color: var(--verde);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            margin-bottom: 0.4rem;
+        }
+        .ba-tip {
+            margin-top: 2rem;
+            background: var(--bg-blue);
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: var(--azul);
+            font-weight: 500;
+        }
+        /* Testimonials Carousel (Existing) */
+        .testimonials-carousel-section {
+            background: white;
+        }
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+            margin-top: 3rem;
+        }
+        .carousel-track {
+            display: flex;
+            gap: 2rem;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .testimonial-slide {
+            flex: 0 0 calc(33.333% - 1.33rem);
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+        }
+        .t-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            border: 3px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .t-stars { color: #FBBF24; margin-bottom: 1rem; }
+        .t-red { background: var(--bg-red); border: 1px solid rgba(226, 75, 74, 0.1); }
+        .t-blue { background: var(--bg-blue); border: 1px solid rgba(74, 144, 226, 0.1); }
+        .t-yellow { background: #FFFBF0; border: 1px solid rgba(242, 201, 76, 0.1); }
+        .t-green { background: var(--bg-green); border: 1px solid rgba(111, 207, 151, 0.1); }
+        /* Garantia */
+        .guarantee-section {
+            background: linear-gradient(135deg, var(--bg-blue) 0%, #E6F7FF 100%);
+            text-align: center;
+        }
+        .guarantee-box {
+            background: white;
+            padding: 4rem;
+            border-radius: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+            box-shadow: 0 20px 60px rgba(74, 144, 226, 0.15);
+            border: 1px solid rgba(74,144,226,0.1);
+        }
+        .guarantee-badge {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 2rem;
+        }
+        .guarantee-box h2 { font-size: 2.5rem; margin-bottom: 1.5rem; color: var(--azul); }
+        .guarantee-box p { font-size: 1.15rem; color: var(--text-slate); margin-bottom: 2.5rem; line-height: 1.8; }
+        /* Pricing */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        .pricing-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(0,0,0,0.1);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s;
+        }
+        .pricing-card.featured {
+            border: 3px solid var(--azul);
+            transform: scale(1.05);
+            box-shadow: 0 30px 60px rgba(74, 144, 226, 0.2);
+            position: relative;
+        }
+        .featured-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--vermelho);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+        .price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin: 1.5rem 0;
+        }
+        .price span { font-size: 1rem; color: var(--text-slate); }
+        .price-features {
+            list-style: none;
+            text-align: left;
+            margin: 2rem 0;
+            flex-grow: 1;
+        }
+        .price-features li {
+            padding: 0.8rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .price-btn {
+            width: 100%;
+            padding: 1.2rem;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .pricing-card.featured .price-btn { background: var(--azul); color: white; border: none; }
+        .pricing-card:not(.featured) .price-btn { background: var(--bg-blue); color: var(--azul); border: 2px solid var(--azul); }
+        /* FAQ */
+        .faq-accordion {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            background: white;
+            margin-bottom: 1rem;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .faq-q {
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+            transition: background 0.3s;
+        }
+        .faq-q::after { content: '+'; font-size: 1.5rem; color: var(--azul); }
+        .faq-item.active .faq-q::after { content: '−'; }
+        
+        .faq-a {
+            max-height: 0;
+            padding: 0 2rem;
+            overflow: hidden;
+            transition: all 0.3s ease-out;
+            color: var(--text-slate);
+        }
+        .faq-item.active .faq-a { max-height: 200px; padding: 0 2rem 2rem; }
+        /* Impact Section */
+        .impact-section {
+            background: linear-gradient(135deg, var(--azul) 0%, var(--verde) 100%);
+            color: white;
+        }
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+        .impact-card {
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .impact-card.i1 { background: rgba(226, 75, 74, 0.2); }
+        .impact-card.i2 { background: rgba(242, 201, 76, 0.2); }
+        .impact-card.i3 { background: rgba(111, 207, 151, 0.2); }
+        .impact-card.i4 { background: rgba(74, 144, 226, 0.2); }
+        .impact-val { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+        /* Closing Section */
+        .closing-section {
+            background: linear-gradient(135deg, var(--azul) 0%, #2E5CB8 100%);
+            color: white;
+            text-align: center;
+            border-radius: 30px;
+            padding: 6rem 4rem;
+        }
+        /* Footer */
+        footer {
+            background: #1E293B;
+            color: #94A3B8;
+            padding: 5rem 0 2rem;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+        .footer-col h4 { color: white; margin-bottom: 1.5rem; font-size: 1.1rem; }
+        .footer-col ul { list-style: none; }
+        .footer-col li { margin-bottom: 0.8rem; }
+        .footer-col a { color: #94A3B8; text-decoration: none; transition: color 0.3s; }
+        .footer-col a:hover { color: white; }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content, .pain-grid, .solution-content, .activities-grid, .teacher-grid, .roi-grid, .whatsapp-section {
+                grid-template-columns: 1fr;
+            }
+            .hero-text { text-align: center; }
+            .hero-text p { margin-left: auto; margin-right: auto; }
+            .hero-buttons, .hero-stats-box { justify-content: center; }
+            .social-proof-badge { grid-template-columns: repeat(2, 1fr); gap: 1rem; border-radius: 20px; }
+            .benefits-grid, .pricing-grid, .impact-grid { grid-template-columns: 1fr 1fr; }
+            .testimonial-slide { flex: 0 0 calc(50% - 1rem); }
+        }
+        @media (max-width: 768px) {
+            .section-title { font-size: 2.2rem; }
+            .hero-text h1 { font-size: 2.5rem; }
+            .process-steps-grid, .benefits-grid, .pricing-grid, .impact-grid { grid-template-columns: 1fr; }
+            .testimonial-slide { flex: 0 0 100%; }
+            .activity-card { flex-direction: column; }
+            .activity-img { width: 100%; height: 200px; }
+            .guarantee-box { padding: 2.5rem; }
+            .social-proof-badge { grid-template-columns: 1fr; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">AEE Fácil</div>
+                <nav>
+                    <a href="#como-funciona">Como funciona</a>
+                    <a href="#beneficios">Benefícios</a>
+                    <a href="#planos">Planos</a>
+                    <a href="#faq">Dúvidas</a>
+                    <a href="https://aeefacil.lovable.app/" class="cta-header">Começar agora</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <section class="hero">
+        <div class="container">
+            <div class="social-proof-badge">
+                <span>✅ 3.500+ Professoras confiam</span>
+                <span>✅ 1.2M+ Atividades adaptadas</span>
+                <span>✅ 245.000+h Economizadas</span>
+                <span>✅ 96% Taxa de satisfação</span>
+            </div>
+            
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Adapte atividades escolares em <span>minutos</span>.</h1>
+                    <p>Deixe a IA fazer o trabalho pesado. Enquanto a inteligência artificial adapta suas atividades, você tem tempo para o que realmente importa: acolher seus alunos.</p>
+                    <div class="hero-buttons">
+                        <a href="https://aeefacil.lovable.app/" class="btn-primary">Adaptar minha primeira atividade GRÁTIS</a>
+                        <a href="#planos" class="btn-secondary">Ver os planos</a>
+                    </div>
+                    <div class="hero-stats-box">
+                        <div class="hero-stat-item">
+                            <span class="hero-stat-value">Até 10h</span>
+                            <span class="hero-stat-label">economizadas por semana</span>
+                        </div>
+                        <div class="hero-stat-item">
+                            <span class="hero-stat-value">Especializada</span>
+                            <span class="hero-stat-label">Criada com ajuda de professoras AEE</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mock-dashboard">
+                    <div class="mock-header">
+                        <div class="mock-dot"></div>
+                        <div class="mock-dot"></div>
+                        <div class="mock-dot"></div>
+                    </div>
+                    <div class="mock-grid">
+                        <div class="mock-card">
+                            <h4>Enviar</h4>
+                            <p>📄 PDF, foto ou texto</p>
+                        </div>
+                        <div class="mock-card">
+                            <h4>Adaptar</h4>
+                            <p>⚡ Automática com IA</p>
+                        </div>
+                        <div class="mock-card">
+                            <h4>Selecionar</h4>
+                            <p>🎯 Tipo de deficiência</p>
+                        </div>
+                        <div class="mock-card">
+                            <h4>Baixar</h4>
+                            <p>📥 DOCX pronto para usar</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="dor">
+        <div class="container">
+            <h2 class="section-title">O que você vive todos os dias</h2>
+            <p class="section-subtitle">Você não está sozinha. Professoras de educação inclusiva enfrentam desafios que ninguém deveria enfrentar sozinha.</p>
+            
+            <div class="pain-grid">
+                <div class="pain-card c1">
+                    <div class="pain-icon">⏱️</div>
+                    <h3>Horas perdidas em adaptação</h3>
+                    <p>Reformular uma atividade simples leva tempo. Adaptar uma prova inteira? Horas. Dias. Noites de trabalho depois da escola.</p>
+                </div>
+                <div class="pain-card c2">
+                    <div class="pain-icon">🧩</div>
+                    <h3>Dificuldade de personalizar</h3>
+                    <p>Cada aluno tem uma necessidade diferente. Não existe "adaptação padrão". Você precisa reinventar a roda para cada criança.</p>
+                </div>
+                <div class="pain-card c3">
+                    <div class="pain-icon">😰</div>
+                    <h3>Sobrecarga emocional</h3>
+                    <p>Você quer fazer o melhor, quer incluir, quer ajudar. Mas o desgaste mental é real. Cansaço que nenhum fim de semana resolve.</p>
+                </div>
+                <div class="pain-card c4">
+                    <div class="pain-icon">🛠️</div>
+                    <h3>Falta de ferramentas certas</h3>
+                    <p>Você busca em inúmeros sites, cria documentos do zero ou improvisa com o que encontra. Nada é feito especificamente para você.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="solution-section">
+        <div class="container">
+            <h2 class="section-title">Isso acaba aqui</h2>
+            <p class="section-subtitle">AEE Fácil é feito com a ajuda de professoras de educação inclusiva. Não é um experimento de IA. É uma ferramenta criada para aliviar seu dia.</p>
+            
+            <div class="solution-content">
+                <div class="step-list">
+                    <div class="step-item">
+                        <div class="step-num">1</div>
+                        <div class="step-info">
+                            <h3>Envie o que desejar</h3>
+                            <p>PDF, foto da atividade ou texto colado. Nossa plataforma reconhece tudo instantaneamente.</p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-num">2</div>
+                        <div class="step-info">
+                            <h3>A IA interpreta e adapta</h3>
+                            <p>Nossa inteligência artificial lê, compreende exercícios, simplifica linguagem e organiza em etapas.</p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-num">3</div>
+                        <div class="step-info">
+                            <h3>Escolha o tipo de adaptação</h3>
+                            <p>TEA, TDAH, Dislexia, Deficiência Intelectual... Cada estudante tem uma versão otimizada.</p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-num">4</div>
+                        <div class="step-info">
+                            <h3>Baixe em segundos</h3>
+                            <p>Seu arquivo está pronto em DOCX. Edite, imprima ou compartilhe sem perda de tempo.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="feature-box-grid">
+                    <div class="feature-box">
+                        <div class="feature-box-icon">📄</div>
+                        <div>
+                            <h4>PDFs aceitos</h4>
+                            <p>Trabalhos e provas em qualquer formato</p>
+                        </div>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-box-icon">📸</div>
+                        <div>
+                            <h4>Fotos e imagens</h4>
+                            <p>Tire foto com seu celular e envie direto</p>
+                        </div>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-box-icon">✂️</div>
+                        <div>
+                            <h4>Copiar e colar</h4>
+                            <p>Cole textos e deixe a IA trabalhar por você</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="activities-section">
+        <div class="container">
+            <h2 class="section-title">Comece com atividades prontas</h2>
+            <p class="section-subtitle">Não precisa criar do zero. Já vêm 1.200+ atividades prontas para adaptar conforme o perfil do seu aluno.</p>
+            
+            <div class="activities-grid">
+                <div class="activity-card red">
+                    <img src="https://i.im.ge/QMaVwJL/img_aprendizd-t600.webp" alt="Leitura" class="activity-img">
+                    <div class="activity-details">
+                        <div class="activity-badge">85 atividades</div>
+                        <h3>📖 Leitura e Interpretação</h3>
+                        <p>Textos com múltiplos níveis de complexidade. Desde histórias simples até análise crítica.</p>
+                    </div>
+                </div>
+                <div class="activity-card blue">
+                    <img src="https://i.im.ge/QMaVPNx/IMG_matematica-t600.webp" alt="Matemática" class="activity-img">
+                    <div class="activity-details">
+                        <div class="activity-badge">62 atividades</div>
+                        <h3>🔢 Matemática Inclusiva</h3>
+                        <p>Cálculos, problemas e geometria pensados para diferentes perfis de aprendizagem.</p>
+                    </div>
+                </div>
+                <div class="activity-card yellow">
+                    <img src="https://i.im.ge/QMaVtfa/IMg_ciencias-t600.webp" alt="Ciências" class="activity-img">
+                    <div class="activity-details">
+                        <div class="activity-badge">48 atividades</div>
+                        <h3>🌍 Ciências Naturais</h3>
+                        <p>Experimentos, conceitos e observação do mundo em linguagem acessível.</p>
+                    </div>
+                </div>
+                <div class="activity-card green">
+                    <img src="https://i.im.ge/QMaVArJ/Img_leitura-t600.webp" alt="Português" class="activity-img">
+                    <div class="activity-details">
+                        <div class="activity-badge">73 atividades</div>
+                        <h3>✏️ Português e Gramática</h3>
+                        <p>Exercícios de escrita, leitura e gramática em versões personalizadas.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="#" class="btn-view-all">Ver todas as atividades</a>
+        </div>
+    </section>
+    <section id="como-funciona">
+        <div class="container">
+            <h2 class="section-title">Como funciona</h2>
+            <p class="section-subtitle">Três passos simples. Sem complicações. Sem tutoriais.</p>
+            
+            <div class="process-steps-grid">
+                <div>
+                    <div class="process-circle g-red-blue">📤</div>
+                    <h3>Envie atividade</h3>
+                    <p>Qualquer formato. PDF, foto, texto. Você escolhe a forma mais fácil para você.</p>
+                </div>
+                <div>
+                    <div class="process-circle g-yellow-green">⚙️</div>
+                    <h3>Escolha adaptação</h3>
+                    <p>Selecione qual necessidade seu aluno tem: TEA, TDAH, Dislexia e mais.</p>
+                </div>
+                <div>
+                    <div class="process-circle g-green-red">📥</div>
+                    <h3>Receba versão adaptada</h3>
+                    <p>Em minutos, sua atividade está pronta. Baixe em DOCX e use imediatamente.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="beneficios">
+        <div class="container">
+            <h2 class="section-title">O que você ganha de verdade</h2>
+            <p class="section-subtitle">Além de economizar tempo, você respira.</p>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">⏰</div>
+                    <h4>Horas liberadas</h4>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">❤️</div>
+                    <h4>Menos desgaste</h4>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎯</div>
+                    <h4>Adaptações precisas</h4>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">📚</div>
+                    <h4>Mais conteúdo</h4>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">✨</div>
+                    <h4>Qualidade garantida</h4>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🤝</div>
+                    <h4>Inclusão real</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="real-teachers-section">
+        <div class="container">
+            <h2 class="section-title">Professoras de verdade usando AEE Fácil</h2>
+            <p class="section-subtitle">Não é marketing. São professoras como você, adaptando atividades reais para seus alunos.</p>
+            
+            <div class="teacher-grid">
+                <div class="teacher-card">
+                    <img src="https://i.im.ge/QMaz2gy/ChatGPT_Image_15_de_mai._de_2026_21_50_35-t600.webp" alt="Maria Silva" class="teacher-img">
+                    <div class="teacher-info">
+                        <span class="teacher-loc">São Paulo, SP</span>
+                        <h3>Maria Silva</h3>
+                        <p class="teacher-quote">"Professora AEE há 8 anos. Com AEE Fácil, consegui adaptar as 30 atividades da semana em apenas 2 horas. Antes levava mais de 10 horas."</p>
+                    </div>
+                </div>
+                <div class="teacher-card">
+                    <img src="https://i.im.ge/QMazdMS/ChatGPT_Image_15_de_mai._de_2026_21_50_46-t600.webp" alt="Carlos Oliveira" class="teacher-img">
+                    <div class="teacher-info">
+                        <span class="teacher-loc">Rio de Janeiro, RJ</span>
+                        <h3>Carlos Oliveira</h3>
+                        <p class="teacher-quote">"Trabalho em sala regular com alunos inclusos. AEE Fácil me economiza tempo para realmente estar perto deles, entender suas dificuldades."</p>
+                    </div>
+                </div>
+                <div class="teacher-card">
+                    <img src="https://i.im.ge/QMazqDz/ChatGPT_Image_15_de_mai._de_2026_21_51_47-t600.webp" alt="Camila Costa" class="teacher-img">
+                    <div class="teacher-info">
+                        <span class="teacher-loc">Minas Gerais, MG</span>
+                        <h3>Camila Costa</h3>
+                        <p class="teacher-quote">"Coordenadora de AEE. Implementamos para todas as 5 professoras da equipe. Resultado: menos stress, mais qualidade no atendimento."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="roi-section">
+        <div class="container">
+            <h2 class="section-title">Quanto você economiza? (Contas reais)</h2>
+            <p class="section-subtitle">Números que provam que o investimento vale a pena.</p>
+            
+            <div class="roi-grid">
+                <div class="roi-card">
+                    <h3>⏱️ TEMPO ECONOMIZADO</h3>
+                    <div class="roi-stat">Sem AEE Fácil (por prova): <span>2-3 horas</span></div>
+                    <div class="roi-stat">Com AEE Fácil (por prova): <span>5-10 min</span></div>
+                    <div class="roi-stat">ECONOMIA POR PROVA: <span style="color: var(--vermelho);">2h 50min</span></div>
+                    <div class="roi-highlight">
+                        <h4>💡 CÁLCULO RÁPIDO</h4>
+                        <p>Se você adapta 2 provas por semana: economiza 5h40min semanais = <strong>23+ horas por mês!</strong></p>
+                    </div>
+                </div>
+                <div class="roi-card">
+                    <h3>💰 VALOR DO SEU TEMPO</h3>
+                    <div class="roi-stat">Sua hora vale (aproximado): <span>R$50-100/h</span></div>
+                    <div class="roi-stat">Economiza por prova: <span>R$140-290</span></div>
+                    <div class="roi-stat">Plano Básico custa: <span style="color: var(--azul);">R$19,90/mês</span></div>
+                    <div class="roi-highlight" style="background: var(--bg-blue); color: var(--azul);">
+                        <h4>✅ VOCÊ RECUPERA O INVESTIMENTO</h4>
+                        <p>Adaptando apenas 1 prova, você já economiza <strong>7 a 14 vezes</strong> o que paga mensalmente!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <h2 class="section-title">Veja o resultado na prática</h2>
+            <p class="section-subtitle">Aqui está uma atividade comum, e como o AEE Fácil a transforma em segundos.</p>
+            
+            <div class="before-after-grid">
+                <!-- Antes -->
+                <div class="ba-box before">
+                    <div class="ba-header">
+                        <span class="ba-badge">Atividade Original</span>
+                        <span style="font-size: 0.8rem; color: #94a3b8;">Estrutura Tradicional</span>
+                    </div>
+                    <div class="ba-content">
+                        <p style="margin-bottom: 1.5rem; color: #475569; font-style: italic;">Leia o texto abaixo e responda às questões utilizando interpretação crítica.</p>
+                        <p style="background: #f1f5f9; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem; border-left: 4px solid #cbd5e1;">
+                            "A preservação ambiental depende da conscientização coletiva e de ações sustentáveis que promovam o equilíbrio entre desenvolvimento econômico e conservação dos recursos naturais."
+                        </p>
+                        <div style="display: flex; flex-direction: column; gap: 1rem;">
+                            <p>1. Explique o significado da expressão “conscientização coletiva”.</p>
+                            <p>2. De que forma o desenvolvimento econômico pode impactar o meio ambiente?</p>
+                            <p>3. Produza um pequeno parágrafo apresentando soluções sustentáveis para reduzir impactos ambientais.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Depois -->
+                <div class="ba-box after">
+                    <div class="ba-header">
+                        <span class="ba-badge">Atividade Adaptada</span>
+                        <span style="font-size: 1.2rem;">🌱</span>
+                    </div>
+                    <div class="ba-content">
+                        <h4 style="color: var(--verde);">Vamos aprender sobre cuidar da natureza!</h4>
+                        
+                        <div class="ba-step">
+                            <strong>Passo 1</strong>
+                            <p>Leia o texto com calma:</p>
+                            <p style="font-size: 1.2rem; font-weight: 500; margin-top: 0.5rem;">"A natureza precisa de cuidado de todas as pessoas."</p>
+                        </div>
+                        <div class="ba-step">
+                            <strong>Passo 2</strong>
+                            <p>Responda uma pergunta por vez:</p>
+                            <ul style="list-style: none; margin-top: 1rem; display: flex; flex-direction: column; gap: 1rem;">
+                                <li>1. Quem deve cuidar da natureza?</li>
+                                <li>2. O que podemos fazer para ajudar o meio ambiente?</li>
+                                <li>3. Cite uma atitude boa para cuidar da natureza.</li>
+                            </ul>
+                        </div>
+                        <div class="ba-tip">
+                            <span>💡</span>
+                            <p>Dica: Você pode responder usando frases curtas.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="testimonials-carousel-section">
+        <div class="container">
+            <h2 class="section-title">O que professoras estão falando</h2>
+            <p class="section-subtitle">Histórias reais de quem usa todos os dias</p>
+            
+            <div class="carousel-container">
+                <div class="carousel-track">
+                    <div class="testimonial-slide t-red">
+                        <img src="https://res.cloudinary.com/deqgw5vdn/image/upload/q_auto/f_auto/v1778867044/mulher2_yh3so6.jpg" alt="Ana" class="t-avatar">
+                        <div class="t-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="testimonial-quote">"Eu passava horas adaptando atividades manualmente. Agora faço em minutos. Minha saúde mental agradece."</p>
+                        <strong style="display:block; margin-top:1rem;">Ana Silva - SP</strong>
+                    </div>
+                    <div class="testimonial-slide t-blue">
+                        <img src="https://res.cloudinary.com/deqgw5vdn/image/upload/q_auto/f_auto/v1778867079/Professor_Lucas_Ramos_rxgi5h.png" alt="Carlos" class="t-avatar">
+                        <div class="t-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="testimonial-quote">"Os alunos finalmente entendem as atividades. A adaptação é tão boa que parece feita especialmente para cada um."</p>
+                        <strong style="display:block; margin-top:1rem;">Carlos Santos - RJ</strong>
+                    </div>
+                    <div class="testimonial-slide t-yellow">
+                        <img src="https://res.cloudinary.com/deqgw5vdn/image/upload/q_auto/f_auto/v1778867067/mulher-de-tiro-medio-passando-bons-momentos-ao-ar-livre_rnuhik.jpg" alt="Marina" class="t-avatar">
+                        <div class="t-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="testimonial-quote">"Tirei qualquer dúvida. O suporte é rápido e a plataforma é tão fácil que qualquer professora consegue usar."</p>
+                        <strong style="display:block; margin-top:1rem;">Marina Costa - MG</strong>
+                    </div>
+                    <div class="testimonial-slide t-green">
+                        <img src="https://res.cloudinary.com/deqgw5vdn/image/upload/q_auto/f_auto/v1778874582/Patricia_xq3dbe.png" alt="Patricia" class="t-avatar">
+                        <div class="t-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="testimonial-quote">"Deixei de chorar de frustração. Agora consigo adaptar atividades para TODOS os meus alunos, sem deixar ninguém para trás."</p>
+                        <strong style="display:block; margin-top:1rem;">Patricia Oliveira - DF</strong>
+                    </div>
+                    <div class="testimonial-slide t-red">
+                        <img src="https://ui-avatars.com/api/?name=R&background=4A90E2&color=fff&size=150" alt="Roberto" class="t-avatar">
+                        <div class="t-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="testimonial-quote">"A qualidade pedagógica é mantida. Não é apenas simplificar, é ADAPTAR de verdade. Os alunos aprendem melhor."</p>
+                        <strong style="display:block; margin-top:1rem;">Roberto Mendes - SP</strong>
+                    </div>
+                    <div class="testimonial-slide t-blue">
+                        <img src="https://res.cloudinary.com/deqgw5vdn/image/upload/q_auto/f_auto/v1778874819/fernanda_aee_rm18mh.png" alt="Fernanda" class="t-avatar">
+                        <div class="t-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="testimonial-quote">"Recomendo para todas as professoras que conheço. É a ferramenta que a gente sempre pediu para as escolas."</p>
+                        <strong style="display:block; margin-top:1rem;">Fernanda Dias - BA</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="guarantee-section">
+        <div class="container">
+            <div class="guarantee-box">
+                <img src="https://res.cloudinary.com/deqgw5vdn/image/upload/q_auto/f_auto/v1778873861/Captura_de_Tela_2025-11-10_a%CC%80s_01.44.37-removebg-preview_ss8pqk.png" alt="7 Dias de Garantia" class="guarantee-badge">
+                <h2>Garantido em 7 dias</h2>
+                <p>Você tem 7 dias para usar AEE Fácil, testar a plataforma e comprovar que economiza tempo. Se não gostar ou achar que não vale a pena, devolvemos 100% do seu dinheiro. Sem perguntas, sem burocracia.</p>
+                <a href="https://aeefacil.lovable.app/" class="btn-primary">Quero testar sem risco</a>
+            </div>
+        </div>
+    </section>
+    <section id="planos">
+        <div class="container">
+            <h2 class="section-title">Planos que fazem sentido</h2>
+            <p class="section-subtitle">Escolha o que é certo para você. Sem amarras.</p>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Gratuito</h3>
+                    <div class="price">R$0<span>/mês</span></div>
+                    <p>Teste de graça</p>
+                    <ul class="price-features">
+                        <li>✓ 3 atividades por semana</li>
+                        <li>✓ Adaptação básica</li>
+                        <li>✓ Suporte por email</li>
+                        <li>✓ Acesso limitado</li>
+                    </ul>
+                    <a href="https://aeefacil.lovable.app/" style="text-decoration:none; display:block;" class="price-btn">Começar teste</a>
+                </div>
+                
+                <div class="pricing-card featured">
+                    <div class="featured-badge">MAIS POPULAR</div>
+                    <h3>Básico</h3>
+                    <div class="price">R$19,90<span>/mês</span></div>
+                    <p>Ideal para uma sala</p>
+                    <ul class="price-features">
+                        <li>✓ Até 50 atividades/mês</li>
+                        <li>✓ Todos os tipos de adaptação</li>
+                        <li>✓ Download em DOCX</li>
+                        <li>✓ Suporte prioritário</li>
+                        <li>✓ Histórico de atividades</li>
+                    </ul>
+                    <a href="https://pay.cakto.com.br/3bmuj5k_890708" style="text-decoration:none; display:block;" class="price-btn">Começar agora</a>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>Profissional</h3>
+                    <div class="price">R$37,90<span>/mês</span></div>
+                    <p>Melhor custo-benefício para equipes</p>
+                    <ul class="price-features">
+                        <li>✓ Até 150 atividades/mês</li>
+                        <li>✓ Adaptações ilimitadas</li>
+                        <li>✓ Múltiplos usuários</li>
+                        <li>✓ Relatórios de progresso</li>
+                        <li>✓ Suporte 24/7</li>
+                    </ul>
+                    <a href="https://pay.cakto.com.br/rfnouqi" style="text-decoration:none; display:block;" class="price-btn">Experimentar</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="faq">
+        <div class="container">
+            <h2 class="section-title">Dúvidas frequentes</h2>
+            <p class="section-subtitle">Respondemos o que você realmente quer saber.</p>
+            
+            <div class="faq-accordion">
+                <div class="faq-item">
+                    <div class="faq-q">Funciona com fotos?</div>
+                    <div class="faq-a">Sim! Você pode tirar uma foto da atividade com seu celular e enviar direto. A IA reconhece o conteúdo perfeitamente.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">Funciona no celular?</div>
+                    <div class="faq-a">Completamente otimizado para celular. Você pode adaptar atividades de qualquer lugar, em qualquer hora. Na escola ou em casa.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">Posso baixar em DOCX?</div>
+                    <div class="faq-a">Sim, em todos os planos pagos. Você recebe o arquivo pronto em Word para editar se desejar.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">Quais tipos de adaptação existem?</div>
+                    <div class="faq-a">Trabalhamos com: TEA nível 1 e 2, TDAH, Dislexia, Deficiência Intelectual e Dificuldades de Aprendizagem.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">Preciso entender de tecnologia?</div>
+                    <div class="faq-a">Não. AEE Fácil foi pensado para ser simples. Se você sabe enviar um e-mail, você sabe usar a plataforma.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">Meus dados estão seguros?</div>
+                    <div class="faq-a">Sim, usamos criptografia para proteger todos os seus documentos e dados pessoais.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">Posso cancelar quando quiser?</div>
+                    <div class="faq-a">Sim, sem taxas ou burocracia. Você tem total controle sobre sua assinatura.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">Funciona com educação inclusiva mesmo?</div>
+                    <div class="faq-a">Sim, foi desenvolvido com professoras da área seguindo diretrizes pedagógicas reais de inclusão.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="impact-section">
+        <div class="container">
+            <h2 class="section-title">O impacto que estamos gerando</h2>
+            <p class="section-subtitle">Números reais de um movimento que ajuda milhares de professoras todos os dias.</p>
+            <div class="impact-grid">
+                <div class="impact-card i1">
+                    <div class="impact-val">3.500+</div>
+                    <p>Professoras ativas</p>
+                </div>
+                <div class="impact-card i2">
+                    <div class="impact-val">245.000+</div>
+                    <p>Horas economizadas</p>
+                </div>
+                <div class="impact-card i3">
+                    <div class="impact-val">1.2M+</div>
+                    <p>Atividades adaptadas</p>
+                </div>
+                <div class="impact-card i4">
+                    <div class="impact-val">96%</div>
+                    <p>Taxa de satisfação</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <div class="closing-section">
+                <h2>Você merece respiros. Você merece apoio.</h2>
+                <p>Sua dedicação é incrível. Mas você não deveria carregar esse peso sozinha. AEE Fácil está aqui para aliviar seu dia.</p>
+                <div style="display:flex; justify-content:center;">
+                    <a href="https://aeefacil.lovable.app/" class="btn-primary">Começar agora (é grátis)</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>AEE Fácil</h4>
+                    <p>A plataforma que torna a educação inclusiva mais simples e humana.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Produto</h4>
+                    <ul>
+                        <li><a href="#">Como funciona</a></li>
+                        <li><a href="#">Planos</a></li>
+                        <li><a href="#">Segurança</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Empresa</h4>
+                    <ul>
+                        <li><a href="#">Sobre nós</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacidade</a></li>
+                        <li><a href="#">Termos de Uso</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AEE Fácil. Feito com ❤️ para professoras de educação inclusiva.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // FAQ Accordion
+        document.querySelectorAll('.faq-q').forEach(q => {
+            q.addEventListener('click', () => {
+                const item = q.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+        // Carousel Logic
+        const track = document.querySelector('.carousel-track');
+        let index = 0;
+        
+        function moveCarousel() {
+            const slidesVisible = window.innerWidth > 1024 ? 3 : (window.innerWidth > 768 ? 2 : 1);
+            const totalSlides = document.querySelectorAll('.testimonial-slide').length;
+            const maxIndex = totalSlides - slidesVisible;
+            
+            index++;
+            if (index > maxIndex) index = 0;
+            
+            const slideWidth = document.querySelector('.testimonial-slide').offsetWidth;
+            const gap = 32;
+            track.style.transform = `translateX(-${index * (slideWidth + gap)}px)`;
+        }
+        setInterval(moveCarousel, 4000);
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
